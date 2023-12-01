@@ -44,7 +44,7 @@ class Solver
     res = Net::HTTP.get_response(uri, headers)
 
     unless res.is_a? Net::HTTPSuccess
-      abort(res.body)
+      abort("HTTP Error: #{res.code} - #{res.body}")
     end
     
     @input = res.body
